@@ -1,0 +1,19 @@
+\subsection{Вычисление юлианской даты}
+$$a = \left\lfloor\frac{14 - \text{month}}{12}\right\rfloor;$$
+$$y = \text{year} + 4800 - a;$$
+$$m = \text{month} + 12a - 3;$$
+$$J\!D\!N = \text{day} + \left\lfloor\frac{153m+2}{5}\right\rfloor +365y+\left\lfloor\frac{y}{4}\right\rfloor -\left\lfloor\frac{y}{100}\right\rfloor +\left\lfloor\frac{y}{400}\right\rfloor -32045.$$
+
+\begin{lstlisting}
+function JDN(year, month, day){
+  year = BigInt(year);
+  month = BigInt(month);
+  day = BigInt(day);
+  let a = (14n - month) / 12n;
+  let y = year + 4800n - a;
+  let m = month + 12*a - 3n;
+  let result = day + (153n*m + 2n)/5n + 365n*y + y/4n - y/100n + y/400n - 32054n;
+  
+  return result;
+}
+\end{lstlisting}
